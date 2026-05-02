@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Tools Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🔥 AI Tools Dashboard</h1>
+
+<div class="tabs">
+  <button onclick="showTab('writer')">AI Writer</button>
+  <button onclick="showTab('image')">AI Image</button>
+  <button onclick="showTab('qr')">QR Code</button>
+</div>
+
+<!-- AI WRITER -->
+<div id="writer" class="tab">
+  <h2>AI Writer</h2>
+  <textarea id="writerInput" placeholder="Write prompt..."></textarea>
+  <button onclick="generateText()">Generate</button>
+  <p id="writerOutput"></p>
+</div>
+
+<!-- AI IMAGE -->
+<div id="image" class="tab" style="display:none;">
+  <h2>AI Image Generator</h2>
+  <input id="imageInput" placeholder="Enter prompt">
+  <button onclick="generateImage()">Generate</button>
+  <img id="imageOutput" width="300">
+</div>
+
+<!-- QR -->
+<div id="qr" class="tab" style="display:none;">
+  <h2>QR Code</h2>
+  <input id="qrInput" placeholder="Enter text or URL">
+  <button onclick="generateQR()">Generate</button>
+  <div id="qrcode"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

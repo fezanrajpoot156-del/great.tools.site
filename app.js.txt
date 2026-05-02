@@ -1,0 +1,43 @@
+function showTab(tab) {
+  document.getElementById("writer").style.display = "none";
+  document.getElementById("image").style.display = "none";
+  document.getElementById("qr").style.display = "none";
+
+  document.getElementById(tab).style.display = "block";
+}
+
+// AI WRITER
+async function generateText() {
+  const input = document.getElementById("writerInput").value;
+
+  const res = await fetch("/.netlify/functions/write", {
+    method: "POST",
+    body: JSON.stringify({ prompt: input }),
+  });
+
+  const data = await res.json();
+  document.getElementById("writerOutput").innerText = data.text;
+}
+
+// AI IMAGE
+async function generateImage() {
+  const input = document.getElementById("imageInput").value;
+
+  const res = await fetch("/.netlify/functions/image", {
+    method: "POST",
+    body: JSON.stringify({ prompt: input }),
+  });
+
+  const data = await res.json();
+  document.getElementById("imageOutput").src = data.image;
+}
+
+// QR
+function generateQR() {
+  document.getElementById("qrcode").innerHTML = "";
+  new QRCode(document.getElementById("qrcode"), {
+    text: document.getElementById("qrInput").value,
+    width: 200,
+    height: 200
+  });
+}
